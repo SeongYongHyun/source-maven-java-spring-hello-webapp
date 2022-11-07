@@ -2,7 +2,8 @@ peline {
   agent any
 
   triggers {
-    pollSCM('* * * * *')
+    //pollSCM('* * * * *')
+    githubPush()
   }
 
   stages {
@@ -24,7 +25,7 @@ peline {
     }
     stage('Deploy') {
       steps {
-        deploy adapters: [tomcat9(credentiaIsId: 'tomcat-manager', url: 'http://54.180.161.57:8080/')], contextPath: null, war: 'target/hello-world.war'
+        deploy adapters: [tomcat9(credentiaIsId: 'tomcat-manager', url: 'http://3.38.164.110:8080/')], contextPath: null, war: 'target/hello-world.war'
       }
     }
   }
